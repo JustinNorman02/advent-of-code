@@ -1,16 +1,16 @@
 
 # My Advent of Code
 
-This repo contains my solutions of the Advent of Code puzzles. [Advent of Code](aventofcode.com) is a yearly 25 day coding challenge in the style of an advent calendar created by [Eric Wastl](https://was.tl/). For more information about Advent of Code [click here](https://adventofcode.com/2024/about).
+This repo contains my solutions for the Advent of Code puzzles. [Advent of Code](https://aventofcode.com) is a yearly 25-day coding challenge in the style of an advent calendar created by [Eric Wastl](https://was.tl/). For more information about Advent of Code [click here](https://adventofcode.com/2024/about).
 
-My solutions are in no way efficient or well implimented, but for the most part they get the right answer.
+My solutions are in no way efficient or well implemented, but for the most part, they get the right answer.
 
 
 
 
 ## How to use
 
-If you want to try my solutions (wouldn't reccomend it) then once you clone the repo you will have to run CreateFolders.bat:
+If you want to try my solutions (wouldn't recommend it) then once you clone the repo you will have to run CreateFolders.bat:
 
     1. Open cmd or powershell
     2. Change directory into the repo (i.e. 'cd C:\Users\Me\advent-of-code')
