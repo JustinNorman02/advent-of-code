@@ -1,7 +1,7 @@
 
 # My Advent of Code
 
-This repo contains my solutions for the Advent of Code puzzles. [Advent of Code](https://aventofcode.com) is a yearly 25-day coding challenge in the style of an advent calendar created by [Eric Wastl](https://was.tl/). For more information about Advent of Code [click here](https://adventofcode.com/2024/about).
+This repo contains my solutions for the Advent of Code puzzles. [Advent of Code](https://adventofcode.com) is a yearly 25-day coding challenge in the style of an advent calendar created by [Eric Wastl](https://was.tl/). For more information about Advent of Code [click here](https://adventofcode.com/2024/about).
 
 My solutions are in no way efficient or well implemented, but for the most part, they get the right answer.
 
