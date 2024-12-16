@@ -1,0 +1,61 @@
+import numpy
+import copy
+
+def print_square_with_hash(matrix, indices_to_replace):
+
+    for i,j in indices_to_replace:
+        # if matrix[i][j] == '.':
+            matrix[i][j] = '#'
+
+    for rows in matrix:
+        print(''.join(rows))
+
+
+
+with open('data.txt') as f:
+    lines = f.read().split("\n")
+
+    for i in range(len(lines)):
+        lines[i] = list(lines[i])
+
+    n = len(lines)
+    m = len(lines[0])
+    indices = [(i, j) for i, sublist in enumerate(lines) for j, char in enumerate(sublist) if char != '.']
+    # dirs = [[-1,0],[0,1],[1,0],[0,-1],[-1,1],[-1,-1],[1,-1],[1,1]]
+    antinodes = []
+
+    for p,(i,j) in enumerate(indices):
+        antenna = lines[i][j]
+
+        if [i,j] not in antinodes:
+            antinodes.append([i,j])
+
+        for k,l in indices[p+1:]:
+            if lines[k][l] == antenna:
+                dx, dy = k-i, l-j
+
+                # print("[%d,%d]->[%d,%d]: %d by %d" %(i,j,k,l,dx,dy))
+                # print(" Antinode 1: [%d, %d]" % (i-dx, j-dx))
+                # print(" Antinode 2: [%d, %d]" % (k+dx, l+dx))
+
+                length = numpy.gcd(dx,dy)
+                dx, dy = int(dx/length), int(dy/length)
+
+                print('min: %d by %d' % (dx,dy))
+
+                print("")
+                
+                for s in range(1,len(lines)):
+
+                    if i-s*dx in range(n) and j-s*dy in range(m) and [i-s*dx, j-s*dy] not in antinodes:
+                        antinodes.append([i-s*dx, j-s*dy])
+                        
+                    if k+s*dx in range(n) and l+s*dy in range(m) and [k+s*dx, l+s*dy] not in antinodes:
+                        antinodes.append([k+s*dx,l+s*dy])
+
+
+
+    # print_square_with_hash(lines, antinodes)
+    # print(antinodes)
+    print(len(antinodes))
+
