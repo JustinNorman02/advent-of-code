@@ -1,10 +1,12 @@
+from tqdm import tqdm
 
 
-
-# with open("test.txt") as f:
-with open("data.txt") as f:
+with open("test.txt") as f:
+# with open("data.txt") as f:
 
     reg, ins = f.read().split("\n\n")
+
+    instr = ins
 
     ins = ins.split()[1].split(',')
 
@@ -19,9 +21,11 @@ with open("data.txt") as f:
     regs[1] = int(reg[1].split()[2])
     regs[2] = int(reg[2].split()[2])
 
-    insp = 0
+    insp = len(ins)-2
 
     out = ""
+
+    regs[0] = 3
 
     while 0 <= insp < len(ins):
 
@@ -42,8 +46,10 @@ with open("data.txt") as f:
             elif inp == 7:
                 raise RuntimeError
 
+            if regs[0] == 0:
+                regs[0] = 1
 
-            regs[0] = regs[0] // 2**(inp)
+            regs[0] = regs[0] << inp
 
         elif op == 1:
             regs[1] = regs[1] ^ inp
@@ -64,9 +70,10 @@ with open("data.txt") as f:
             regs[1] = inp % 8
 
         elif op == 3:
-            if regs[0]:
-                insp = inp
-                continue
+            pass
+            # if regs[0]:
+            #     insp = inp
+            #     continue
 
         elif op == 4:
             regs[1] = regs[1]^regs[2]
@@ -85,9 +92,9 @@ with open("data.txt") as f:
                 raise RuntimeError
 
             if out:
-                out += ","
+                out = "," + out
 
-            out += str(inp%8)
+            out = str(inp%8) + out
             
 
         elif op == 6:
@@ -104,7 +111,7 @@ with open("data.txt") as f:
                 raise RuntimeError
 
 
-            regs[1] = regs[0] // 2**(inp)
+            regs[1] = regs[0] << inp
 
         elif op == 7:
             if inp == 4:
@@ -120,12 +127,15 @@ with open("data.txt") as f:
                 raise RuntimeError
 
 
-            regs[2] = regs[0] // 2**(inp)
+            regs[2] = regs[0] << inp
         
-        insp += 2
+        insp -= 2
+        
+        if out != instr:
+            insp = insp % len(ins)
 
-    print(regs)
     print(out)
+    print(regs)
 
 
 
